@@ -3,6 +3,7 @@ package com.gctech.btgpactual.ordems.entity;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class OrderItems {
@@ -10,10 +11,16 @@ public class OrderItems {
 	private String product;
 	private Integer quantity;
 	@Field(targetType = FieldType.DECIMAL128)
-	private BigInteger price;
+	private BigDecimal price;
 
 	public OrderItems() {
-		// TODO document why this constructor is empty
+		super();
+	}
+
+	public OrderItems(String product, Integer quantity, BigDecimal price) {
+		this.product = product;
+		this.quantity = quantity;
+		this.price = price;
 	}
 
 	public String getProduct() {
@@ -32,11 +39,11 @@ public class OrderItems {
 		this.quantity = quantity;
 	}
 
-	public BigInteger getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigInteger price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 }

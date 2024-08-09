@@ -12,48 +12,60 @@ import java.util.List;
 @Document(collection = "tb_orders")
 public class OrderEntity {
 
-	@MongoId
-	private Long orderId;
-	@Indexed(name = "customer_id_index")
-	private Long costomerId;
+    @MongoId
+    private Long orderId;
 
-	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal orderValue;
+    @Indexed(name = "customer_id_index")
+    private Long customerId;
 
-	private List<OrderItems> items;
+    @Field(targetType = FieldType.DECIMAL128)
+    private BigDecimal orderValue;
 
-	public OrderEntity() {
-	}
+    private List<OrderItems> items;
 
-	public Long getOrderId() {
-		return orderId;
-	}
+    public OrderEntity() {
+    }
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("OrderEntity{");
+        sb.append("orderId=").append(orderId);
+        sb.append(", customerId=").append(customerId);
+        sb.append(", orderValue=").append(orderValue);
+        sb.append(", items=").append(items);
+        sb.append('}');
+        return sb.toString();
+    }
 
-	public Long getCostomerId() {
-		return costomerId;
-	}
+    public Long getOrderId() {
+        return orderId;
+    }
 
-	public void setCostomerId(Long costomerId) {
-		this.costomerId = costomerId;
-	}
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
 
-	public BigDecimal getOrderValue() {
-		return orderValue;
-	}
+    public Long getCustomerId() {
+        return customerId;
+    }
 
-	public void setOrderValue(BigDecimal orderValue) {
-		this.orderValue = orderValue;
-	}
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
 
-	public List<OrderItems> getItems() {
-		return items;
-	}
+    public BigDecimal getOrderValue() {
+        return orderValue;
+    }
 
-	public void setItems(List<OrderItems> items) {
-		this.items = items;
-	}
+    public void setOrderValue(BigDecimal orderValue) {
+        this.orderValue = orderValue;
+    }
+
+    public List<OrderItems> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItems> items) {
+        this.items = items;
+    }
 }
